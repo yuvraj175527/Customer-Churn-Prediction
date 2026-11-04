@@ -1,136 +1,271 @@
-<<<<<<< HEAD
 # Customer Churn Prediction Pipeline
 
-End-to-end supervised machine learning project for predicting customer churn.
-
-## Project structure
-- `dataset/`: place the churn CSV dataset here.
-- `models/`: trained model artifacts are saved here.
-- `src/`: data preprocessing, feature engineering, training and evaluation.
-- `api/`: FastAPI application.
-- `notebooks/`: optional exploratory analysis.
-- `tests/`: project tests.
-
-## Setup
-```bash
-python -m venv venv
-# Windows:
-venv\Scripts\activate
-# macOS/Linux:
-source venv/bin/activate
-
-pip install -r requirements.txt
-```
-
-## Run
-Training and API commands will be added as the pipeline is implemented.
-=======
-# Customer Churn Prediction System
+A Machine Learning-based Customer Churn Prediction System that predicts whether a customer is likely to leave a subscription-based service. The project uses Python, Scikit-learn, and FastAPI to build, train, evaluate, and deploy a predictive machine learning model through a REST API.
 
 ## Project Overview
 
-The **Customer Churn Prediction System** is a machine learning-based application designed to predict whether a customer is likely to leave a telecom service provider.
+Customer churn is a major challenge for subscription-based businesses such as telecom companies and streaming platforms.
 
-The project uses real-world telecom customer data to analyze customer behavior, subscription details, service usage, and billing information. It applies multiple machine learning algorithms to identify potential churners and helps businesses understand customer retention risks.
+This project uses historical customer data to identify customers who are likely to discontinue their services. It helps businesses understand customer behaviour and take preventive actions to improve customer retention.
 
-The trained machine learning model is deployed using **FastAPI**, allowing users to submit customer information through an interactive web dashboard and receive churn predictions.
+The system predicts customer churn probability and classifies customers into different risk levels.
 
 ## Key Features
 
-- **Data Preprocessing:** Handles missing values, categorical variables, and numerical data.
-- **Feature Engineering:** Creates additional features such as Tenure Group, Average Monthly Spend, and Total Services.
-- **Machine Learning:** Implements Logistic Regression, Random Forest, and Gradient Boosting.
-- **Hyperparameter Tuning:** Uses GridSearchCV with cross-validation to optimize model performance.
-- **Model Evaluation:** Evaluates performance using Accuracy, Precision, Recall, F1-score, ROC-AUC, and Confusion Matrix.
-- **Business Impact Analysis:** Estimates the potential costs associated with missed churners and false alarms using configurable assumptions.
-- **REST API Deployment:** Deploys the trained model using FastAPI.
-- **Input Validation:** Uses Pydantic to validate customer information.
-- **Interactive Dashboard:** Provides a web interface for entering customer details and viewing predictions.
-- **Automated Testing:** Uses Pytest to test API functionality.
+- Data preprocessing and cleaning.
+- Handling missing values and duplicate records.
+- One-Hot Encoding for categorical variables.
+- Numerical feature scaling.
+- Feature engineering with at least three additional features.
+- Training multiple machine learning classification models.
+- Hyperparameter tuning using cross-validation.
+- Model evaluation using Accuracy, Precision, Recall, F1-Score, ROC-AUC and Precision-Recall.
+- Best model selection based on performance.
+- REST API deployment using FastAPI.
+- Real-time customer churn prediction.
+- Interactive API documentation using Swagger UI.
 
-## Technology Stack
+## Technologies Used
 
-| Category | Technologies |
+| Technology | Purpose |
 |---|---|
-| Programming Language | Python |
-| Data Processing | Pandas, NumPy |
-| Machine Learning | Scikit-learn |
-| Model Storage | Joblib |
-| Backend | FastAPI |
-| API Validation | Pydantic |
-| Frontend | HTML, CSS, JavaScript |
-| Testing | Pytest, HTTPX |
-| Development Tools | VS Code, Jupyter Notebook |
+| Python | Programming language |
+| Pandas | Data processing |
+| NumPy | Numerical operations |
+| Scikit-learn | Machine learning |
+| Matplotlib | Data visualization |
+| FastAPI | REST API development |
+| Uvicorn | API server |
+| Joblib | Model serialization |
+| HTML, CSS, JavaScript | Frontend interface |
 
-## Machine Learning Algorithms
+## Project Structure
+
+```text
+Customer-Churn-Prediction/
+│
+├── api/
+│   └── main.py
+│
+├── dataset/
+│   └── churn.csv
+│
+├── models/
+│   └── best_model.pkl
+│
+├── src/
+│   ├── preprocessing.py
+│   ├── feature_engineering.py
+│   ├── train.py
+│   └── evaluate.py
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── tests/
+│   └── test_api.py
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+## Dataset
+
+The project uses a customer churn dataset containing customer information, subscription details, service usage, and billing information.
+
+Dataset: Telco Customer Churn Dataset.
+
+The dataset is stored inside the `dataset/` directory as:
+
+`churn.csv`
+
+## Machine Learning Models
+
+The project trains and compares multiple classification algorithms:
 
 1. Logistic Regression
 2. Random Forest Classifier
-3. Gradient Boosting Classifier
+3. Decision Tree Classifier
 
-The models are compared using cross-validation and ROC-AUC scoring. The best-performing model is saved and used for customer churn predictions.
+Hyperparameter tuning is performed using cross-validation to improve model performance.
 
-## Model Performance
+### Model Evaluation
 
-Previously recorded evaluation results:
+The models are evaluated using:
 
-| Evaluation Metric | Result |
-|---|---:|
-| Accuracy | 81% |
-| ROC-AUC | 84.49% |
-| Churn Precision | 68% |
-| Churn Recall | 51% |
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC Score
+- Precision-Recall Analysis
 
-*Note: These are results from the previously completed training run. Results may change when the model is retrained.*
+The best-performing model is saved as `best_model.pkl` inside the `models/` directory.
 
-## Feature Engineering
+## Installation and Setup
 
-The system creates three additional customer features:
+Follow these steps to run the project locally.
 
-- **TenureGroup:** Categorizes customers based on subscription duration.
-- **AverageMonthlySpend:** Estimates average monthly spending using total charges and tenure.
-- **TotalServices:** Counts the number of selected customer services.
+### Step 1: Clone the Repository
 
-## API Endpoints
+```bash
+git clone https://github.com/yuvraj175527/Customer-Churn-Prediction.git
+```
+
+### Step 2: Open the Project Directory
+
+```bash
+cd Customer-Churn-Prediction
+```
+
+### Step 3: Create a Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+Activate the virtual environment.
+
+**Windows:**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux / macOS:**
+
+```bash
+source venv/bin/activate
+```
+
+### Step 4: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+If dependencies are not available in requirements.txt, install the main packages:
+
+```bash
+pip install pandas numpy scikit-learn fastapi uvicorn joblib matplotlib
+```
+
+### Step 5: Train the Machine Learning Model
+
+Run the following command from the project root directory:
+
+```bash
+python src/train.py
+```
+
+This process will:
+
+- Load the customer churn dataset.
+- Preprocess the data.
+- Perform feature engineering.
+- Train and evaluate multiple machine learning models.
+- Select the best-performing model.
+- Save the trained model as `models/best_model.pkl`.
+
+**Note:** The model file is generated automatically after successful training.
+
+### Step 6: Start the FastAPI Server
+
+Run:
+
+```bash
+uvicorn api.main:app --reload
+```
+
+The server will start at:
+
+```text
+http://127.0.0.1:8000
+```
+
+## API Documentation
+
+FastAPI provides interactive API documentation through Swagger UI.
+
+Open the following URL in your browser:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+You can test the prediction API directly through this documentation.
+
+### API Endpoints
 
 | Method | Endpoint | Description |
 |---|---|---|
-| GET | `/` | Opens the web dashboard |
-| GET | `/health` | Checks API status |
-| POST | `/predict` | Predicts customer churn |
-| GET | `/docs` | Opens Swagger API documentation |
+| GET | `/` | Home endpoint |
+| GET | `/health` | API health check |
+| POST | `/predict` | Predict customer churn |
 
-## Prediction Output
+### Customer Churn Prediction
 
-The API returns:
-
-- Churn Probability
-- Prediction (Yes/No)
-- Risk Level (Low/Medium/High)
+The `/predict` endpoint accepts customer information in JSON format and returns the predicted churn probability, binary prediction, and risk level.
 
 Example response:
 
 ```json
 {
-  "churn_probability": 32.49,
-  "prediction": "No",
-  "risk_level": "Low"
+    "churn_probability": 32.49,
+    "prediction": "No",
+    "risk_level": "Low"
 }
 ```
 
-## Project Objective
+**Response Explanation:**
 
-The main objective is to develop an end-to-end machine learning solution that helps telecom businesses identify customers at risk of leaving, understand churn patterns, and make more informed customer retention decisions.
+- `churn_probability`: Estimated probability of customer churn.
+- `prediction`: Binary churn classification (Yes/No).
+- `risk_level`: Customer churn risk category.
+
+*Use the request fields defined by the API's prediction schema when testing `/predict`.*
+
+## Running the Project
+
+To run the complete project:
+
+1. Clone the GitHub repository.
+2. Install the required dependencies.
+3. Place the dataset inside the dataset directory.
+4. Train the machine learning models.
+5. Start the FastAPI server.
+6. Open the Swagger documentation.
+7. Test the `/predict` endpoint using customer information.
+
+## Real-World Applications
+
+This project can be used by:
+
+- Telecom companies.
+- Subscription-based businesses.
+- Streaming platforms.
+- Internet service providers.
+- Customer relationship management systems.
+
+Businesses can use churn predictions to identify at-risk customers and develop targeted customer retention strategies.
 
 ## Future Enhancements
 
-- Improve churn recall through threshold optimization and model tuning.
-- Add customer prediction history.
-- Develop advanced analytics and visualization features.
-- Provide personalized customer retention recommendations.
-- Deploy the application to a cloud platform.
+- Integration with live customer databases.
+- Advanced machine learning algorithms.
+- Automated customer retention recommendations.
+- Real-time monitoring dashboard.
+- Cloud-based API deployment.
 
-## Conclusion
+## Author
 
-This project demonstrates a complete machine learning workflow, including data preprocessing, feature engineering, model selection, hyperparameter tuning, model evaluation, business impact analysis, REST API development, and frontend integration.
->>>>>>> 33670ab33b8a0f27874ee62be77ceb1931e4ef00
+**Yuvraj Khadka**
+
+GitHub: https://github.com/yuvraj175527
+
+## License
+
+This project is developed for educational and academic purposes.
