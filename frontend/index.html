@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <div>
+            <h1>Customer Churn Prediction</h1>
+            <p>AI-Powered Customer Retention Dashboard</p>
+        </div>
+        <span class="status">● API Connected</span>
+    </header>
+
+    <section class="stats">
+        <div class="card">
+            <h3>Model Accuracy</h3>
+            <h2>81%</h2>
+        </div>
+
+        <div class="card">
+            <h3>ROC-AUC Score</h3>
+            <h2>84.49%</h2>
+        </div>
+
+        <div class="card">
+            <h3>ML Models</h3>
+            <h2>3</h2>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <h2>Customer Information</h2>
+
+        <form id="predictionForm">
+
+            <div class="form-grid">
+
+                <label>Gender
+                    <select name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </label>
+
+                <label>Senior Citizen
+                    <select name="SeniorCitizen">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </label>
+
+                <label>Partner
+                    <select name="Partner">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </label>
+
+                <label>Dependents
+                    <select name="Dependents">
+                        <option>No</option>
+                        <option>Yes</option>
+                    </select>
+                </label>
+
+                <label>Tenure (Months)
+                    <input type="number" name="tenure" min="0" max="72" value="12" required>
+                </label>
+
+                <label>Phone Service
+                    <select name="PhoneService">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </label>
+
+                <label>Multiple Lines
+                    <select name="MultipleLines">
+                        <option>No</option>
+                        <option>Yes</option>
+                        <option>No phone service</option>
+                    </select>
+                </label>
+
+                <label>Internet Service
+                    <select name="InternetService">
+                        <option>DSL</option>
+                        <option>Fiber optic</option>
+                        <option>No</option>
+                    </select>
+                </label>
+
+                <label>Online Security
+                    <select name="OnlineSecurity">
+                        <option>No</option>
+                        <option>Yes</option>
+                        <option>No internet service</option>
+                    </select>
+                </label>
+
+                <label>Online Backup
+                    <select name="OnlineBackup">
+                        <option>Yes</option>
+                        <option>No</option>
+                        <option>No internet service</option>
+                    </select>
+                </label>
+
+                <label>Device Protection
+                    <select name="DeviceProtection">
+                        <option>No</option>
+                        <option>Yes</option>
+                        <option>No internet service</option>
+                    </select>
+                </label>
+
+                <label>Tech Support
+                    <select name="TechSupport">
+                        <option>No</option>
+                        <option>Yes</option>
+                        <option>No internet service</option>
+                    </select>
+                </label>
+
+                <label>Streaming TV
+                    <select name="StreamingTV">
+                        <option>No</option>
+                        <option>Yes</option>
+                        <option>No internet service</option>
+                    </select>
+                </label>
+
+                <label>Streaming Movies
+                    <select name="StreamingMovies">
+                        <option>No</option>
+                        <option>Yes</option>
+                        <option>No internet service</option>
+                    </select>
+                </label>
+
+                <label>Contract
+                    <select name="Contract">
+                        <option>Month-to-month</option>
+                        <option>One year</option>
+                        <option>Two year</option>
+                    </select>
+                </label>
+
+                <label>Paperless Billing
+                    <select name="PaperlessBilling">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </label>
+
+                <label>Payment Method
+                    <select name="PaymentMethod">
+                        <option>Electronic check</option>
+                        <option>Mailed check</option>
+                        <option>Bank transfer (automatic)</option>
+                        <option>Credit card (automatic)</option>
+                    </select>
+                </label>
+
+                <label>Monthly Charges
+                    <input type="number" name="MonthlyCharges" step="0.01" min="0" value="70.35" required>
+                </label>
+
+                <label>Total Charges
+                    <input type="number" name="TotalCharges" step="0.01" min="0" value="844.20" required>
+                </label>
+
+            </div>
+
+            <button type="submit" id="predictBtn">
+                Predict Customer Churn
+            </button>
+
+        </form>
+    </section>
+
+    <section id="result" class="result hidden">
+        <h2>Prediction Result</h2>
+        <div id="prediction"></div>
+        <div id="probability"></div>
+        <div id="risk"></div>
+    </section>
+
+    <footer>
+        Customer Churn Prediction System | Machine Learning Project
+    </footer>
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

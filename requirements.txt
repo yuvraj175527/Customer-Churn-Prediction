@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+joblib
+fastapi
+uvicorn
+pydantic
+python-multipart
+pytest
+httpx
+matplotlib
+seaborn
+jupyter
